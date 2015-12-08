@@ -13,3 +13,15 @@ body {
 .result ul {
 	list-style-type: none;
 }
+
+#status[state=done] {
+	color: green;
+}
+
+#status[state=work] {
+	color: blue;
+}
+
+#status[state=error] {
+	color: red;
+}

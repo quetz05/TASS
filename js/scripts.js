@@ -1,5 +1,8 @@
 function getGuildMembers()
 {
+
+	$("#status").attr("state", "work");
+	
 	$("#membersGuildResult").html("");
 
 	var key = "p8tpyrde4q9angm2zbvgqccxycaw6jsz";	
@@ -44,8 +47,13 @@ function getGuildMembers()
 					html: items.join( "" )
 				}).appendTo( "#membersGuildResult" );
 				
+				$("#status").attr("state", "done");
+				
 			}
 			else
+			{
+				$("#status").attr("state", "error");
 				alert("ERROR! Status: " + status);
+			}
 		});
 }
