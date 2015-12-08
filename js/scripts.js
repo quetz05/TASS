@@ -1,0 +1,51 @@
+function getGuildMembers()
+{
+	$("#membersGuildResult").html("");
+
+	var key = "p8tpyrde4q9angm2zbvgqccxycaw6jsz";	
+	var realm = $("#realm").val();//.toString().replace(" ", "%20");		
+	var guildName = $("#guildName").val().replace(" ", "%20");
+		
+	if(key == "" || realm == "" || guildName == "")
+	{
+		alert("Empty form!");
+		return;
+	}
+	
+		
+	var address = "https://eu.api.battle.net/wow/guild/" + realm + "/" + guildName + "?fields=members&locale=pl_PL&apikey=" + key;
+
+	$.getJSON(address, 
+		function(data, status)
+		{
+			if(status == "success")
+			{
+				var items = [];
+				$.each( data, function( key, val ) 
+				{
+					if(key == "members")
+					{					
+						$.each(val, function (k, v)
+						{
+							$.each(v, function (k2, v2)
+							{
+								items.push( "<li><b>" + k2 +"</b>: " + v2 + "</li>" );
+							});
+							
+							
+						});
+					}
+					else
+						items.push( "<li><b>" + key +"</b>: " + val + "</li>" );
+				});
+				 
+				$( "<ul/>", 
+				{
+					html: items.join( "" )
+				}).appendTo( "#membersGuildResult" );
+				
+			}
+			else
+				alert("ERROR! Status: " + status);
+		});
+}

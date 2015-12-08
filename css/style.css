@@ -1,7 +1,15 @@
+body {
+	text-align: center;
+}
+
 .form-control {
 	margin: 10px;
 }
 
-h1 {
-	text-align: center;
+.result {
+	text-align: left;
+}
+
+.result ul {
+	list-style-type: none;
 }
