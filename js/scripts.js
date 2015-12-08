@@ -6,8 +6,8 @@ function getGuildMembers()
 	$("#membersGuildResult").html("");
 
 	var key = "p8tpyrde4q9angm2zbvgqccxycaw6jsz";	
-	var realm = $("#realm").val();//.toString().replace(" ", "%20");		
-	var guildName = $("#guildName").val().replace(" ", "%20");
+	var realm = $("#realm").val();		
+	var guildName = $("#guildName").val();
 		
 	if(key == "" || realm == "" || guildName == "")
 	{
