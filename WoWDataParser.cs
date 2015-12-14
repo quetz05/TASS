@@ -12,11 +12,20 @@ namespace TASS
     {
         private WoWDataDownloader wdd;
 
+        /// <summary>
+        /// Konstruktor parsera.
+        /// </summary>
+        /// <param name="apiKey">Klucz użytkownika do API Battle.NET potrzebny dla WoWDataDownloadera</param>
         public WoWDataParser(String apiKey)
         {
             wdd = new WoWDataDownloader(apiKey);
         }
 
+        /// <summary>
+        /// Metoda parsująca dane.
+        /// </summary>
+        /// <param name="data">JSon w postaci Stringa</param>
+        /// <returns>JSon w postaci JTokena</returns>
         public JToken parseData(String data)
         {
             return JToken.Parse(data);
@@ -25,9 +34,6 @@ namespace TASS
         public void printMembersItemLevel(String realm, String guildName)
         {
             JToken token = parseData(wdd.getGuildInfo("members", realm, guildName));
-
-            //["items"]["averageItemLevel"]
-
             foreach(var x in token["members"])
             {
                 String charName = (String)x["character"]["name"];
