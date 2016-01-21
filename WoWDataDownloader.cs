@@ -79,7 +79,7 @@ namespace TASS
             {
                 return webClient.DownloadString(html);
             }         
-            catch(System.Net.WebException e)
+            catch(System.Net.WebException)
             {
                 return null;
             }

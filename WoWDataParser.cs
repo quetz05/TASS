@@ -12,6 +12,7 @@ namespace TASS
     class WoWDataParser
     {
         private WoWDataDownloader wdd;
+        public GuildDictionary dictionary;
 
         /// <summary>
         /// Konstruktor parsera.
@@ -20,6 +21,7 @@ namespace TASS
         public WoWDataParser(String apiKey)
         {
             wdd = new WoWDataDownloader(apiKey);
+            dictionary = new GuildDictionary();
         }
 
         /// <summary>
@@ -38,22 +40,25 @@ namespace TASS
             List<String> result = new List<String>();
             foreach(var x in token["members"])
             {
+
                 String charName = (String)x["character"]["name"];
+                String role = "SS"; //(String)x["character"]["spec"]["role"];
                 String charInfo = wdd.getCharacterInfo("items", realm, charName);
 
                 if (charInfo != null)
                 {
                     JToken xData = parseData(charInfo);
-                    result.Add(charName + " - " + (String)xData["items"]["averageItemLevel"]);
+                    if (xData.First == null)
+                        continue;
+                    String il = (String)xData["items"]["averageItemLevel"];
+                    int itemLevel = int.Parse(il);
+                    dictionary.Add(guildName, charName, itemLevel, Character.RoleFromString(role));
                 }
             }
 
             return result.ToArray();
         }
         
-
-
-
 
     }
 }

@@ -13,7 +13,6 @@ namespace TASS
 {
     public partial class MainWindow : Form
     {
-
         enum Status
         {
             Nothing,
@@ -25,6 +24,7 @@ namespace TASS
 
         String key;
         WoWDataParser wdp;
+        
 
         public MainWindow()
         {
@@ -34,18 +34,10 @@ namespace TASS
             wdp = new WoWDataParser(key);
         }
 
-       
-
 
         private void GetConfig()
         {
             key = "p8tpyrde4q9angm2zbvgqccxycaw6jsz";
-            //String realm = "Darkmoon Faire";
-            //String guild = "Redanian Inquisition";
-            //WoWDataParser wdp = new WoWDataParser(quetzKey);
-
-            //wdp.printMembersItemLevel(realm, guild);
-
         }
 
         private void ChangeStatus(Status status)
@@ -98,11 +90,50 @@ namespace TASS
         {
             BT_Run.Invoke(new Action(() => BT_Run.Enabled = false));
             ChangeStatus(Status.Working);
+
+            GetGuildsList();
+            GetCharactersLists();
+            GetUsefulData();
             
-            String[] data = wdp.getMembersItemLevel(TB_RealmName.Text, "Redanian Inquisition");
-            TB_Logs.Invoke(new Action(() => TB_Logs.Lines = data));
+            PrintResults();
+
             ChangeStatus(Status.Done);
             BT_Run.Invoke(new Action(() => BT_Run.Enabled = true));
+        }
+
+        void GetCharactersLists()
+        {
+            TB_Logs.Invoke(new Action(() => TB_Logs.AppendText("Getting characters...\n")));
+            String[] guilds = null;
+            TB_Guilds.Invoke(new Action(() => guilds = TB_Guilds.Lines));
+
+            foreach(String guild in guilds)
+            {
+                wdp.getMembersItemLevel(TB_RealmName.Text, guild);
+                TB_Logs.Invoke(new Action(() => TB_Logs.AppendText("\tGet " + guild + " characters\n")));
+            }
+        }
+
+        private void GetGuildsList()
+        {
+
+
+        }
+
+
+        private void PrintResults()
+        {
+            TB_Logs.Invoke(new Action(() => TB_Logs.AppendText("\nRESULTS:\n")));
+
+            wdp.dictionary.GuildCount();
+
+        }
+
+
+        private void GetUsefulData()
+        {
+
+
         }
 
         private void BT_GetGuilds_Click(object sender, EventArgs e)

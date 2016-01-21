@@ -150,7 +150,7 @@
             this.TB_Guilds.Name = "TB_Guilds";
             this.TB_Guilds.Size = new System.Drawing.Size(219, 174);
             this.TB_Guilds.TabIndex = 5;
-            this.TB_Guilds.Text = "";
+            this.TB_Guilds.Text = "Aeon\nElysium\nRemnant\nDivine Misfortune\nRaven Knights";
             // 
             // label2
             // 
@@ -178,6 +178,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(914, 633);
             this.Controls.Add(this.splitContainer1);
+            this.MinimumSize = new System.Drawing.Size(930, 671);
             this.Name = "MainWindow";
             this.Text = "WoW Guild Comparer";
             this.splitContainer1.Panel1.ResumeLayout(false);
