@@ -6,23 +6,19 @@ using System.Threading.Tasks;
 using System.Web;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Windows.Forms;
 
 namespace TASS
 {
     class Program
     {
-        static void Main(string[] args)
+        [STAThread]
+        static void Main()
         {
-            String quetzKey = "p8tpyrde4q9angm2zbvgqccxycaw6jsz";
-            String realm = "Darkmoon Faire";
-            String guild = "Redanian Inquisition";
-
-            WoWDataParser wdp = new WoWDataParser(quetzKey);
-
-            wdp.printMembersItemLevel(realm, guild);
-
-            Console.ReadKey();
-
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new MainWindow());
         }
+
     }
 }
