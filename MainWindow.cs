@@ -154,12 +154,14 @@ namespace TASS
 
             BT_Run.Invoke(new Action(() => BT_Run.Enabled = !isWorking));
             BT_GetGuilds.Invoke(new Action(() => BT_GetGuilds.Enabled = !isWorking));
+            BT_ComputeIL.Invoke(new Action(() => BT_ComputeIL.Enabled = !isWorking));
             TB_Guilds.Invoke(new Action(() => TB_Guilds.Enabled = !isWorking));
             TB_Key.Invoke(new Action(() => TB_Key.Enabled = !isWorking));
             TB_RealmName.Invoke(new Action(() => TB_RealmName.Enabled = !isWorking));
             TB_ScrapAddress.Invoke(new Action(() => TB_ScrapAddress.Enabled = !isWorking));
             TB_RealmName2.Invoke(new Action(() => TB_RealmName2.Enabled = !isWorking));
             TB_Result.Invoke(new Action(() => TB_Result.Enabled = !isWorking));
+            TB_Database.Invoke(new Action(() => TB_Database.Enabled = !isWorking));
         }
 
         private void TB_ScrapAddress_TextChanged(object sender, EventArgs e)
@@ -172,7 +174,7 @@ namespace TASS
 
         private void BT_ComputeIL_Click(object sender, EventArgs e)
         {
-            MethodInvoker asynTask = new MethodInvoker(GetGuildsList);
+            MethodInvoker asynTask = new MethodInvoker(Compute);
             asynTask.BeginInvoke(null, null);
         }
 

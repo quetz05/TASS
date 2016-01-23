@@ -43,11 +43,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.TB_RealmName = new System.Windows.Forms.TextBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.BT_ComputeIL = new System.Windows.Forms.Button();
             this.TB_RealmName2 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.TB_Result = new System.Windows.Forms.RichTextBox();
             this.TB_Logs = new System.Windows.Forms.RichTextBox();
-            this.BT_ComputeIL = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.TB_Database = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -227,20 +229,32 @@
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.TB_Database);
             this.splitContainer2.Panel1.Controls.Add(this.BT_ComputeIL);
             this.splitContainer2.Panel1.Controls.Add(this.TB_RealmName2);
+            this.splitContainer2.Panel1.Controls.Add(this.label6);
             this.splitContainer2.Panel1.Controls.Add(this.label5);
             // 
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.TB_Result);
             this.splitContainer2.Size = new System.Drawing.Size(452, 375);
-            this.splitContainer2.SplitterDistance = 54;
+            this.splitContainer2.SplitterDistance = 88;
             this.splitContainer2.TabIndex = 1;
+            // 
+            // BT_ComputeIL
+            // 
+            this.BT_ComputeIL.Location = new System.Drawing.Point(345, 21);
+            this.BT_ComputeIL.Name = "BT_ComputeIL";
+            this.BT_ComputeIL.Size = new System.Drawing.Size(104, 39);
+            this.BT_ComputeIL.TabIndex = 2;
+            this.BT_ComputeIL.Text = "Compute";
+            this.BT_ComputeIL.UseVisualStyleBackColor = true;
+            this.BT_ComputeIL.Click += new System.EventHandler(this.BT_ComputeIL_Click);
             // 
             // TB_RealmName2
             // 
-            this.TB_RealmName2.Location = new System.Drawing.Point(7, 31);
+            this.TB_RealmName2.Location = new System.Drawing.Point(107, 40);
             this.TB_RealmName2.Name = "TB_RealmName2";
             this.TB_RealmName2.Size = new System.Drawing.Size(191, 20);
             this.TB_RealmName2.TabIndex = 0;
@@ -252,16 +266,17 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label5.Location = new System.Drawing.Point(3, 12);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(98, 16);
+            this.label5.Size = new System.Drawing.Size(76, 16);
             this.label5.TabIndex = 1;
-            this.label5.Text = "Realm Name";
+            this.label5.Text = "Database";
             // 
             // TB_Result
             // 
             this.TB_Result.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TB_Result.Location = new System.Drawing.Point(0, 0);
             this.TB_Result.Name = "TB_Result";
-            this.TB_Result.Size = new System.Drawing.Size(452, 317);
+            this.TB_Result.ReadOnly = true;
+            this.TB_Result.Size = new System.Drawing.Size(452, 283);
             this.TB_Result.TabIndex = 0;
             this.TB_Result.Text = "";
             // 
@@ -275,15 +290,22 @@
             this.TB_Logs.TabIndex = 2;
             this.TB_Logs.Text = "";
             // 
-            // BT_ComputeIL
+            // label6
             // 
-            this.BT_ComputeIL.Location = new System.Drawing.Point(343, 12);
-            this.BT_ComputeIL.Name = "BT_ComputeIL";
-            this.BT_ComputeIL.Size = new System.Drawing.Size(104, 39);
-            this.BT_ComputeIL.TabIndex = 2;
-            this.BT_ComputeIL.Text = "Compute";
-            this.BT_ComputeIL.UseVisualStyleBackColor = true;
-            this.BT_ComputeIL.Click += new System.EventHandler(this.BT_ComputeIL_Click);
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label6.Location = new System.Drawing.Point(3, 44);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(98, 16);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Realm Name";
+            // 
+            // TB_Database
+            // 
+            this.TB_Database.Location = new System.Drawing.Point(107, 12);
+            this.TB_Database.Name = "TB_Database";
+            this.TB_Database.Size = new System.Drawing.Size(191, 20);
+            this.TB_Database.TabIndex = 3;
             // 
             // MainWindow
             // 
@@ -332,5 +354,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RichTextBox TB_Result;
         private System.Windows.Forms.Button BT_ComputeIL;
+        private System.Windows.Forms.TextBox TB_Database;
+        private System.Windows.Forms.Label label6;
     }
 }
