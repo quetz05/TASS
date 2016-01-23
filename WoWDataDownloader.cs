@@ -22,10 +22,15 @@ namespace TASS
         /// Konstruktor klasy.
         /// </summary>
         /// <param name="apiKey">Klucz użytkownika do API Batte.NET</param>
-        public WoWDataDownloader(String apiKey)
+        public WoWDataDownloader(String apiKey = "")
         {
             this.apiKey = apiKey;
             webClient = new WebClient();
+        }
+
+        public void SetKey(String key)
+        {
+            apiKey = key;
         }
 
         /// <summary>

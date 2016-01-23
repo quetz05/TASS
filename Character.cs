@@ -8,35 +8,19 @@ namespace TASS
 {
     class Character
     {
-        public enum Role
-        {
-            Tank,
-            Healer,
-            DPS,
-            Unknown
-        };
-
         public int itemLevel;
         public String name;
-        public Role role;
+        public String role;
+        public String guild;
+        public String realm;
 
-        public Character(int itemLevel, String name, Role role = Role.Unknown)
+        public Character(String realm, String guild, int itemLevel, String name, String role = "")
         {
+            this.realm = realm;
+            this.guild = guild;
             this.itemLevel = itemLevel;
             this.name = name;
             this.role = role;
-        }
-
-        static public Character.Role RoleFromString(String role)
-        {
-            switch(role)
-            {
-                case "DPS": return Role.DPS;
-                case "TANK": return Role.Tank;
-                case "HEALING": return Role.Healer;
-                default: return Role.Unknown;
-            }
-
         }
     }
 }
