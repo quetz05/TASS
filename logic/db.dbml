@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="tass" Class="dbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=polskaniezwykla.pl;Initial Catalog=tass;User ID=tass" SettingsObjectName="WindowsFormsApplication1.Properties.Settings" SettingsPropertyName="tassConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.CharInfo" Member="CharInfos">
+    <Type Name="CharInfo">
+      <Column Name="name" Type="System.String" DbType="VarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="role" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="guild" Type="System.String" DbType="VarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="realm" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="itemLevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
