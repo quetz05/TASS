@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Collections;
-using WindowsFormsApplication1.logic;
 
 namespace TASS
 {
@@ -77,7 +76,7 @@ namespace TASS
             return JToken.Parse(data);
         }
 
-        public String[] getMembersItemLevel(String realm, String guildName)
+        public String[] getMembersItemLevel(String dbAddress, String realm, String guildName)
         {
             dictionary.Clear();
 
@@ -93,9 +92,9 @@ namespace TASS
                 {
                     roleToken = x["character"]["spec"]["role"];
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
-
+                    continue;
                 }
 
                 if (roleToken == null)
@@ -114,7 +113,7 @@ namespace TASS
                 }
             }
 
-            dbDataContext cont = new dbDataContext();
+            dbDataContext cont = new dbDataContext(dbAddress);
             var data = dictionary.GetDbObjectList();
             cont.CharInfos.InsertAllOnSubmit(data);
 
@@ -126,12 +125,12 @@ namespace TASS
             return result.ToArray();
         }
 
-        public String[] ComputeGuildsItemLevel(String realmName)
+        public String[] ComputeGuildsItemLevel(String dbAddress, String realmName)
         {
             GuildDictionary dataFromBase = new GuildDictionary();
             List<String> list = new List<String>();
 
-            dbDataContext cont = new dbDataContext();
+            dbDataContext cont = new dbDataContext(dbAddress);
 
             var data = cont.CharInfos.Where(x => x.realm == realmName).ToList();
             foreach (CharInfo ci in data)

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="tass" Class="dbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=polskaniezwykla.pl;Initial Catalog=tass;User ID=tass" SettingsObjectName="WindowsFormsApplication1.Properties.Settings" SettingsPropertyName="tassConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=polskaniezwykla.pl;Initial Catalog=tass;User ID=tass" SettingsObjectName="TASS.Properties.Settings" SettingsPropertyName="tassConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.CharInfo" Member="CharInfos">
     <Type Name="CharInfo">
       <Column Name="name" Type="System.String" DbType="VarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />

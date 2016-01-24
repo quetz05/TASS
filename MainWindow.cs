@@ -100,10 +100,11 @@ namespace TASS
             TB_Logs.Invoke(new Action(() => TB_Logs.AppendText("Getting characters...\n")));
             String[] guilds = null;
             TB_Guilds.Invoke(new Action(() => guilds = TB_Guilds.Lines));
+            String dbAddress = TB_Database.Text;
 
             foreach(String guild in guilds)
             {
-                wdp.getMembersItemLevel(TB_RealmName.Text, guild);
+                wdp.getMembersItemLevel(dbAddress, TB_RealmName.Text, guild);
                 TB_Logs.Invoke(new Action(() => TB_Logs.AppendText("\tGet " + guild + " characters\n")));
             }
         }
@@ -170,8 +171,9 @@ namespace TASS
         {
             WorkingState(true);
 
-            String name = TB_RealmName2.Text;
-            String [] result = wdp.ComputeGuildsItemLevel(name);
+            String realmName = TB_RealmName2.Text;
+            String dbAddress = TB_Database.Text;
+            String[] result = wdp.ComputeGuildsItemLevel(dbAddress, realmName);
 
             TB_Result.Invoke(new Action(() => TB_Result.Lines = result));
 
