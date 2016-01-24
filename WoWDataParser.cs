@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Collections;
+using WindowsFormsApplication1.logic;
 
 namespace TASS
 {
@@ -36,7 +37,7 @@ namespace TASS
 
             public void AddCharacterRole(String role)
             {
-                switch(role)
+                switch(role.Trim())
                 {
                     case "DPS": DPS++; break;
                     case "TANK": Tank++; break;
@@ -86,7 +87,20 @@ namespace TASS
             {
 
                 String charName = (String)x["character"]["name"];
-                String role = "SS"; //(String)x["character"]["spec"]["role"];
+                JToken roleToken = null;
+
+                try
+                {
+                    roleToken = x["character"]["spec"]["role"];
+                }
+                catch (Exception e)
+                {
+
+                }
+
+                if (roleToken == null)
+                    continue;
+                String role = (String)roleToken;
                 String charInfo = wdd.getCharacterInfo("items", realm, charName);
 
                 if (charInfo != null)
@@ -100,20 +114,31 @@ namespace TASS
                 }
             }
 
+            dbDataContext cont = new dbDataContext();
+            var data = dictionary.GetDbObjectList();
+            cont.CharInfos.InsertAllOnSubmit(data);
+
+            Console.WriteLine(data.Count);
+            cont.SubmitChanges();
             // TODO - Zapis informacji w bazie
             // AddToBase(dictionary)
 
             return result.ToArray();
         }
 
-        public String[] ComputeGuildsItemLevel(String guildName)
+        public String[] ComputeGuildsItemLevel(String realmName)
         {
             GuildDictionary dataFromBase = new GuildDictionary();
             List<String> list = new List<String>();
-            
-            // TODO - pobranie informacji z bazy
-            // Branych jest pod uwagę przynajmniej 2 tanków, 4 healerów i 19 dpsów
-            
+
+            dbDataContext cont = new dbDataContext();
+
+            var data = cont.CharInfos.Where(x => x.realm == realmName).ToList();
+            foreach (CharInfo ci in data)
+            {
+                dataFromBase.Add(ci.realm, ci.guild, ci.name, (int)ci.itemLevel, ci.role);
+            }
+
 
             int result = 0;
             foreach(var guild in dataFromBase.Get())

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WindowsFormsApplication1.logic;
 
 namespace TASS
 {
@@ -38,6 +39,28 @@ namespace TASS
         public void Clear()
         {
             dictionary.Clear();
+        }
+        public List<CharInfo> GetDbObjectList()
+        {
+            List<CharInfo> list = new List<CharInfo>();
+            foreach(var pair in dictionary)
+                {
+                   foreach(Character c in pair.Value){
+                       CharInfo ci = new CharInfo();
+                       ci.name = c.name;
+                       ci.guild = c.guild;
+                       ci.realm = c.realm;
+                       ci.role = c.role;
+                       ci.itemLevel = c.itemLevel;
+                        list.Add(ci);
+                   }
+                    
+
+                 
+ 
+                }
+
+            return list;
         }
 
     }
