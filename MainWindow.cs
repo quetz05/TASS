@@ -91,8 +91,6 @@ namespace TASS
             WorkingState(true);
 
             GetCharactersLists();
-            
-            PrintResults();
 
             WorkingState(false);
         }
@@ -119,16 +117,6 @@ namespace TASS
             
             WorkingState(false);
         }
-
-
-        private void PrintResults()
-        {
-            TB_Logs.Invoke(new Action(() => TB_Logs.AppendText("\nRESULTS:\n")));
-
-            wdp.dictionary.GuildCount();
-
-        }
-
 
         private void BT_GetGuilds_Click(object sender, EventArgs e)
         {
